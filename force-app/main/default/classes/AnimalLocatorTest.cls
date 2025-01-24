@@ -24,6 +24,8 @@ private class AnimalLocatorTest {
 
     @isTest
     static void myUnitTest() {
-        // TO DO: implement unit test
+        Test.setMock(HttpCalloutMock.class, new AnimalLocatorMock());
+        System.assertEquals('majestic badger', AnimalLocator.getAnimalNameById(1));
+        System.assertEquals('Animal not found', AnimalLocator.getAnimalNameById(100));
     }
 }

@@ -7,8 +7,8 @@ public with sharing class AnimalLocator {
         HttpResponse response = http.send(request);
         
         if(response.getStatusCode() == 200) {
-            String results = JSON.deserializeUntyped(response.getBody()).get('name');
-            return results;
+            Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            return (String) results.get('name');
         } else {
             return 'Animal not found';
         }
