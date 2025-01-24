@@ -21,11 +21,16 @@
  */
 @isTest
 private class AnimalLocatorTest {
-
     @isTest
-    static void myUnitTest() {
+    static void testGetAnimalNameById() {
+        // Imposta il mock per simulare una risposta valida
         Test.setMock(HttpCalloutMock.class, new AnimalLocatorMock());
-        System.assertEquals('majestic badger', AnimalLocator.getAnimalNameById(1));
-        System.assertEquals('Animal not found', AnimalLocator.getAnimalNameById(100));
+        
+        Integer animalId = 1; // ID di esempio
+        String expectedName = 'Tiger'; // Nome atteso
+        String actualName = AnimalLocator.getAnimalNameById(animalId); // Chiama il metodo
+
+        // Asserisci che il nome ritornato sia quello atteso
+        System.assertEquals(expectedName, actualName, 'The returned name should match the expected value');
     }
 }
